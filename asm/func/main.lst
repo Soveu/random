@@ -1,0 +1,53 @@
+     1                                 %line 1+1 main.asm
+     2                                 [bits 64]
+     3                                 
+     4                                 
+     5                                 SYS_exit equ 60
+     6                                 SYS_read equ 0
+     7                                 SYS_write equ 1
+     8                                 
+     9                                 FD_STDIN equ 0
+    10                                 FD_STDOUT equ 1
+    11                                 FD_STDERR equ 2
+    12                                 
+    13                                 BUFLEN equ 1024
+    14                                 
+    15                                 [section .data]
+    16                                 msg:
+    17 00000000 48656C6C6F2077C3B3-     db "Hello wórld", 10, 0
+    18 00000000 726C640A00         
+    19                                 dataend:
+    20                                 
+    21                                 
+    22                                 [section .bss]
+    23 00000000 <gap>                   buf resb BUFLEN
+    24                                 
+    25                                 [section .text]
+    26                                 [global main]
+    27                                 main:
+    28 00000000 55                      push rbp
+    29 00000001 4889E5                  mov rbp, rsp
+    30                                 
+    31 00000004 48C7C000000000          mov rax, SYS_read
+    32 0000000B 48C7C700000000          mov rdi, FD_STDIN
+    33 00000012 48C7C6[00000000]        mov rsi, buf
+    34 00000019 48C7C200040000          mov rdx, BUFLEN
+    35 00000020 0F05                    syscall
+    36                                 
+    37 00000022 4889C2                  mov rdx, rax
+    38 00000025 48C7C001000000          mov rax, SYS_write
+    39 0000002C 48C7C701000000          mov rdi, FD_STDOUT
+    40 00000033 48C7C6[00000000]        mov rsi, buf
+    41 0000003A 0F05                    syscall
+    42                                 
+    43 0000003C 48C7C001000000          mov rax, SYS_write
+    44 00000043 48C7C701000000          mov rdi, FD_STDOUT
+    45 0000004A 48C7C6[00000000]        mov rsi, msg
+    46 00000051 48BA0E000000000000-     mov rdx, dataend-msg
+    47 00000051 00                 
+    48 0000005B 0F05                    syscall
+    49                                 
+    50 0000005D 48C7C000000000          mov rax, 0
+    51 00000064 C9                      leave
+    52 00000065 C3                      ret
+    53                                 

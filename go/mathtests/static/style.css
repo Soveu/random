@@ -1,0 +1,22 @@
+body{
+    background-color: lightblue;
+    color: aliceblue;
+    font: bold;
+}
+a:link, a:visited, a:hover, a:active{
+    text-decoration: none;
+    
+}
+.main-flow{
+}
+.header{
+    color: darkcyan;
+    box-align: center;
+}
+.resultTable{
+    border: 2px solid;
+    color: darkgreen;
+}
+.resultHeader{
+    color: darkslategrey;
+}

@@ -1,0 +1,118 @@
+\documentclass{article}
+
+\usepackage{listings}
+
+\author{Tomasz Marx}
+\title{My first {\LaTeX} document}
+
+\begin{document}
+
+\maketitle
+\section{Introduction}
+This is some text!
+This is new line in my editor.
+
+You have to make two returns!
+
+\section{Formatting}
+
+This is normal text.
+\textbf{This is bold text.}
+\textit{This is italic text.}
+\emph{This is emphatic.}
+\underline{Underlined text.}
+
+\subsection{Subsection}
+"This is in quotation marks."
+``This is in proper quotation marks.''
+`This is in proper quotation marks.'
+
+\section{Lists}
+\begin{enumerate}
+\item Brad
+\item Butter\label{but}
+\item Water
+\end{enumerate}
+
+\begin{itemize}
+    \item[--] Lamp
+    \begin{itemize}
+    \item Red Lamp
+    \item Blue Lamp
+    \end{itemize}
+\item Bed
+\end{itemize}
+
+\section{Lorem Ipsum}
+So, in section \ref{label}, I will talk about labels
+
+\section{Labels\label{label}}
+I mentioned bed, which is number \ref{but} on the list.
+
+\section{Math\label{math}}
+$2x^3$
+$$2x^34$$
+$$2x^{34}$$
+$$2x^{3x+4}$$
+$$\sqrt x_n$$
+\(x^2 + y^2 = z^2\)
+\[ x^n + y^n = z^n \]
+
+Albert Einstein is famous because of discovery of $E=mv^2$
+In natural units ($c$ = 1), the formula expresses the identity
+
+\begin{equation}
+E=mc^2
+\end{equation}
+
+$\alpha \beta \gamma \Gamma \delta \Delta \epsilon \varepsilon \zeta \eta \theta \vartheta \Theta $
+$\upsilon \Upsilon \phi \varphi \Phi \chi \psi \Psi \omega \Omega $
+$\iota \kappa \lambda \Lambda \mu \nu \xi \Xi \o \O \pi \Pi \rho \varrho \sigma \Sigma \tau $
+
+$\infty \nabla \emptyset \neg \forall $
+$\cdots \surd \triangle$
+
+$\times \div \cap \cup \neq \leq \geq \in \perp \notin \subset \simeq \approx \wedge \vee $
+$\oplus \otimes \equiv \cong$
+
+\[ \int\limits_0^1 x^2 + y^2 \ dx \]
+
+\[ a_1^2 + a_2^2 = a_3^2 \]
+
+\[ \sum_{i=1}^{\infty} \frac{1}{n^s} 
+= \prod_p \frac{1}{1 - p^{-s}} \]
+
+\big( \Big) \bigg( \Bigg)
+\big[ \Big[ \bigg] \Bigg[
+
+Testing notation for limits
+
+\[
+\lim_{h \rightarrow 0 } \frac{f(x+h)-f(x)}{h}
+\]
+
+This operator changes when used alongside
+text \( \lim_{x \rightarrow h} (x-h) \).
+
+ % \begin{align*}
+ % 3x^2 \in R \subset Q \\
+ % \mathnormal{3x^2 \in R \subset Q} \\
+ % \mathrm{3x^2 \in R \subset Q} \\
+ % \mathit{3x^2 \in R \subset Q} \\
+ % \mathbf{3x^2 \in R \subset Q} \\
+ % \mathsf{3x^2 \in R \subset Q} \\
+ % \mathtt{3x^2 \in R \subset Q}
+ % \end{align*}
+
+$$ T_B = \left( \frac{1}{T_0} - \frac{R ln \frac{P}{P_0}}{\Delta H_{vap}} \right) ^ {-1} $$
+
+This is how you include source code
+
+\begin{lstlisting}
+int sum(int a, int b){
+    return a+b;
+}
+\end{lstlisting}
+
+\lstinputlisting[language=C, firstline=2, lastline=99]{source.c}
+\end{document}

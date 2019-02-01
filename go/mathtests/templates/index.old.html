@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Maths Project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/style.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="main-flow" align="center">
+            <a href="/">
+                <h1 class="header">Welcome to the maths project</h1>
+            </a>
+            <form action="/" method="POST">
+                <table>
+                    <tr>
+                        <td>
+                            <strong>Enter the question id</strong>
+                        </td>
+                        <td>
+                            <input name="q_id" type="text" maxlength="8" minlength="8" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" value="Search">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            {{if .QiD}}
+                <hr>
+                <h2 class="resultHeader">Results for {{.QiD}}</h2>
+                {{if .Results}}
+                    {{range .Results}}
+                        <table class="resultTable">
+                            {{if .HasVariables}}
+                            <tr>
+                                <td>With data</td>
+                                <td>
+                                    <table border="1px">
+                                    {{range $key, $element := .Variables}}
+                                        <tr>
+                                            <td>{{$key}}</td>
+                                            <td>{{$element}}</td>
+                                        </tr>
+                                    {{end}}
+                                    </table>
+                                </td>
+                            </tr>
+                            {{end}}
+                            <tr>
+                                <td>Answer</td>
+                                <td>{{.Answer}}</td>
+                            </tr>
+                        </table>
+                    {{end}}
+                {{else}}
+                    <h3>No results found</h3>
+                {{end}}
+            {{end}}
+        </div>
+    </body>
+</html>

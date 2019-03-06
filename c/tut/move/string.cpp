@@ -5,8 +5,10 @@
 
 //int const tries = std::numeric_limits<decltype(tries)>::max();
 int const tries = 1 << 8;
+
 using ms = std::chrono::milliseconds;
 using ClockType = std::chrono::steady_clock;
+
 constexpr char TEXT1[]{
   "qx/NbHorkwpcs31rY4JkEB9cxJa+O+MFT+2RyJqCzBO4ZUgk3EWlnEYoKf+DkEscQftgKy+Q53Ms" 
   "jXCA7Th/ZAEi7gCr8A5+sl5BOiyJfzJ3k5Ez6BGmih5jOEGYg8nBa2GWGgejy1d3nfXB6I5uXn3t"

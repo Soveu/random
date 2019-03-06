@@ -5,7 +5,7 @@ int main(){
 
   std::cin >> x;
 
-  int foo[x];
+  int foo[x]{0};
 
   return sizeof(foo);
 }

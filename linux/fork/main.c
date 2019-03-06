@@ -13,7 +13,8 @@ int main(){
   if(child == 0){
     puts("Hello from the child!");
     puts(foo);
-    sleep(3);
+//    sleep(3);
+    pause();
     puts("Exiting child...");
     return 3;
   } else {
@@ -29,6 +30,7 @@ int main(){
 //    } else {
 //      puts("Killing child successfull :>");
 //    }
+    pause();
 
     if(wait(&status) == child){
       printf("Child ended - status code: %d\n", WEXITSTATUS(status));

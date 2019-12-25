@@ -13,7 +13,7 @@ BUFLEN    equ 1024
 
 section .data
 msg:
-	db "Hello wórld", 10, 0
+	db "Hello world", 10, 0
 dataend:
 
 ; declaring zero-initialized data

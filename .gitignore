@@ -11,4 +11,6 @@
 *.o
 *.out
 oi/*
+*.pyc
+/__pycache__
 !Makefile

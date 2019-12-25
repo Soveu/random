@@ -1,13 +1,25 @@
+#include <iostream>
 #include <vector>
 #include <array>
 
 #include "SFML/Graphics.hpp"
 
-int const squareSize    = 10;
-int const gridWidth     = 90;
-int const gridHeight    = 70;
+int const squareSize    = 4;
+int const gridWidth     = 240;
+int const gridHeight    = 135;
 int const windowWidth   = squareSize * gridWidth;
 int const windowHeight  = squareSize * gridHeight;
+
+const sf::Color colors[] = {
+  sf::Color::Red,
+  sf::Color::Green,
+  sf::Color::Blue,
+  sf::Color::Magenta,
+  sf::Color::Yellow,
+  sf::Color::Cyan
+};
+
+using Grid = std::vector<std::array<sf::RectangleShape, gridWidth>>;
 
 struct Pcg32 { 
   uint64_t state;
@@ -24,28 +36,62 @@ struct Pcg32 {
   }
 };
 
+bool grow_step(Grid* g, std::vector<sf::Vector2i>* queue, sf::Color c, Pcg32* rng) {
+  /* Non-production code random element picker */
+  sf::Vector2i coords;
+  do {
+    if(queue->size() == 0) {
+      return false;
+    }
+    size_t index = rng->random() % queue->size();
+    coords = (*queue)[index];
+    (*queue)[index] = queue->back();
+    queue->pop_back();
+  } while((*g)[coords.y][coords.x].getFillColor() != sf::Color::Black);
+
+  (*g)[coords.y][coords.x].setFillColor(c);
+  if(coords.x > 0 && (*g)[coords.y][coords.x-1].getFillColor() == sf::Color::Black) {
+    queue->push_back({coords.x-1, coords.y});
+  }
+  if(coords.y > 0 && (*g)[coords.y-1][coords.x].getFillColor() == sf::Color::Black) {
+    queue->push_back({coords.x, coords.y-1});
+  }
+  if(coords.x < gridWidth-1 && (*g)[coords.y][coords.x+1].getFillColor() == sf::Color::Black) {
+    queue->push_back({coords.x+1, coords.y});
+  }
+  if(coords.y < gridHeight-1 && (*g)[coords.y+1][coords.x].getFillColor() == sf::Color::Black) {
+    queue->push_back({coords.x, coords.y+1});
+  }
+  /* TODO */
+
+  return true;
+}
+
 int main() {
   sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Grow");
   window.setFramerateLimit(60);
   
   Pcg32 rng;
-  std::array<std::array<sf::RectangleShape, gridWidth>, gridHeight> grid;
-  std::vector<sf::Vector2i> queued;
+  Grid grid(gridHeight);
+  std::array<std::vector<sf::Vector2i>, 6> queues;
 
   for(int i=0; i<gridHeight; ++i) {
     for(int j=0; j<gridWidth; ++j) {
       auto rect = sf::RectangleShape();
       rect.setSize(sf::Vector2f(squareSize, squareSize));
-      rect.setFillColor(sf::Color::Green);
-      //rect.setOutlineColor(sf::Color::Red);
+      rect.setFillColor(sf::Color::Black);
+      //rect.setOutlineColor(sf::Color(0x3f, 0x3f, 0x3f));
       //rect.setOutlineThickness(1);
       rect.setPosition(j*squareSize, i*squareSize);
       grid[i][j] = rect;
     }
   }
 
-  queued.push_back({gridWidth/2, gridHeight/2});
+  for(auto& queue : queues) {
+    queue.push_back({rng.random() % gridWidth, rng.random() % gridHeight});
+  }
 
+  bool isWorking = true;
   while (window.isOpen())
   {
     sf::Event event;
@@ -55,27 +101,12 @@ int main() {
           window.close();
     }
 
-    /* Non-production code random element picker */
-    size_t index = rng.random() % queued.size();
-    const auto coords = queued[index];
-    queued[index] = queued.back();
-    queued.pop_back();
-
-    if(grid[coords.y][coords.x].getFillColor() == sf::Color::Green) {
-      grid[coords.y][coords.x].setFillColor(sf::Color::Red);
-      if(coords.x > 0 && grid[coords.y][coords.x-1].getFillColor() != sf::Color::Red) {
-        queued.push_back({coords.x-1, coords.y});
+    for(int i=0; isWorking && i<10; ++i) {
+      bool flag = false;
+      for(int i=0; i<queues.size(); ++i) {
+        flag = grow_step(&grid, &(queues[i]), colors[i], &rng) || flag;
       }
-      if(coords.x > 0 && grid[coords.y-1][coords.x].getFillColor() != sf::Color::Red) {
-        queued.push_back({coords.x, coords.y-1});
-      }
-      if(coords.x < gridWidth-1 && grid[coords.y][coords.x+1].getFillColor() != sf::Color::Red) {
-        queued.push_back({coords.x+1, coords.y});
-      }
-      if(coords.y < gridHeight-1 && grid[coords.y+1][coords.x].getFillColor() != sf::Color::Red) {
-        queued.push_back({coords.x, coords.y+1});
-      }
-      /* TODO */
+      isWorking = flag;
     }
 
     window.clear();

@@ -13,4 +13,5 @@
 oi/*
 *.pyc
 /__pycache__
+*.data
 !Makefile

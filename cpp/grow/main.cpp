@@ -4,9 +4,9 @@
 
 #include "SFML/Graphics.hpp"
 
-int const squareSize    = 4;
-int const gridWidth     = 240;
-int const gridHeight    = 135;
+int const squareSize    = 3;
+int const gridWidth     = 320;
+int const gridHeight    = 180;
 int const windowWidth   = squareSize * gridWidth;
 int const windowHeight  = squareSize * gridHeight;
 
@@ -16,7 +16,8 @@ const sf::Color colors[] = {
   sf::Color::Blue,
   sf::Color::Magenta,
   sf::Color::Yellow,
-  sf::Color::Cyan
+  sf::Color::Cyan,
+  sf::Color::White
 };
 
 using Grid = std::vector<std::array<sf::RectangleShape, gridWidth>>;
@@ -62,7 +63,21 @@ bool grow_step(Grid* g, std::vector<sf::Vector2i>* queue, sf::Color c, Pcg32* rn
   if(coords.y < gridHeight-1 && (*g)[coords.y+1][coords.x].getFillColor() == sf::Color::Black) {
     queue->push_back({coords.x, coords.y+1});
   }
-  /* TODO */
+
+  /*
+  if(coords.x > 0 && coords.y > 0 && (*g)[coords.y-1][coords.x-1].getFillColor() == sf::Color::Black) {
+    queue->push_back({coords.x-1, coords.y-1});
+  }
+  if(coords.x > 0 && coords.y < gridHeight-1 && (*g)[coords.y+1][coords.x-1].getFillColor() == sf::Color::Black) {
+    queue->push_back({coords.x-1, coords.y+1});
+  }
+  if(coords.x < gridWidth-1 && coords.y > 0 && (*g)[coords.y-1][coords.x+1].getFillColor() == sf::Color::Black) {
+    queue->push_back({coords.x+1, coords.y-1});
+  }
+  if(coords.x < gridWidth-1 && coords.y < gridHeight-1 && (*g)[coords.y+1][coords.x+1].getFillColor() == sf::Color::Black) {
+    queue->push_back({coords.x+1, coords.y+1});
+  }
+  */
 
   return true;
 }
@@ -73,7 +88,7 @@ int main() {
   
   Pcg32 rng;
   Grid grid(gridHeight);
-  std::array<std::vector<sf::Vector2i>, 6> queues;
+  std::array<std::vector<sf::Vector2i>, 7> queues;
 
   for(int i=0; i<gridHeight; ++i) {
     for(int j=0; j<gridWidth; ++j) {

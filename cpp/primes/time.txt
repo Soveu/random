@@ -1,0 +1,34 @@
+SIMPLE SIEVE
+2^31 (total of 105097565 primes)
+real	0m24.711s
+user	0m24.173s
+sys	0m0.306s
+
+2^30 54400028
+real	0m12.150s
+user	0m11.858s
+sys	0m0.157s
+
+2^29 28192750
+real	0m5.805s
+user	0m5.670s
+sys	0m0.082s
+
+
+O(n) SIEVE
+2^31 105097565
+real	0m24.549s
+user	0m20.276s
+sys	0m4.035s
+
+2^30 54400028
+real	0m12.161s
+user	0m9.928s
+sys	0m2.082s
+
+2^29 28192750
+
+real	0m6.001s
+user	0m4.930s
+sys	0m1.005s
+

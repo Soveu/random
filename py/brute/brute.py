@@ -22,10 +22,10 @@ def brute(text, sleeptime=0.02, flush=True, end='\n'):
     if flush:
         sys.stdout.flush()
 
-t = 0.02
+t = 0.03
 
 print("Login: ", end='')
-brute("k2e16", t)
+brute("klasa2e-1", t)
 print("Password: ", end='')
-brute("lolpass", t)
+brute("k2e1p45n3", t)
             

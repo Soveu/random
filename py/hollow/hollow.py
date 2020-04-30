@@ -4,7 +4,7 @@ import base64
 import json
 from Crypto.Cipher import AES
 
-FILEPATH = "/home/soveu/.config/unity3d/Team Cherry/Hollow Knight/user2.dat"
+FILEPATH = "/home/soveu/.config/unity3d/Team Cherry/Hollow Knight/user3.dat"
 KEY = b"UKu52ePUBwetZ9wNX88o54dnfKRu0T1l"
 MAGIC = b"\x00\x01\x00\x00\x00\xff\xff\xff\xff\x01\x00\x00\x00\x00\x00\x00\x00\x06\x01\x00\x00\x00"
 
@@ -55,7 +55,7 @@ origsave = remove_padding(decrypt_save(s1))
 print(origsave[-16:])
 
 savejson = json.loads(origsave)
-savejson["playerData"]["geo"] = -1
+savejson["playerData"]["geo"] = 2500
 savejson["playerData"]["playTime"] = 3600.0 * 24 * 365 * 10
 
 encsave = encrypt_save(json.dumps(savejson, separators=(',',':')).encode('utf-8'))

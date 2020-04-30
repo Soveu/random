@@ -2,8 +2,6 @@
 #include <vector>
 #include <stdint.h>
 
-int64_t marks = 0;
-
 std::vector<uint64_t> get_primes(uint64_t n) {
   n += 1;
   std::vector<bool> isntPrime(n);
@@ -20,7 +18,6 @@ std::vector<uint64_t> get_primes(uint64_t n) {
 
     for(uint64_t i = number*3; i<isntPrime.size(); i += number) {
       isntPrime[i] = true;
-      marks += 1;
     }
 
     primes.push_back(number);
@@ -30,11 +27,14 @@ std::vector<uint64_t> get_primes(uint64_t n) {
 }
 
 int main() {
-  auto primes = get_primes(1ULL << 29);
+  auto primes = get_primes(64);
   std::cout << primes.size() << '\n';
-  std::cout << marks << " marks\n";
-  std::cout << static_cast<double>(marks) / primes.size() << " marks per prime\n";
-  std::cout << static_cast<double>(marks) / primes.back() << " marks per number\n";
+
+  int64_t num = 1;
+  for(size_t i=0; i<primes.size(); ++i) {
+    num *= primes[i];
+    std::cout << num << '\n';
+  }
 
   return 0;
 }

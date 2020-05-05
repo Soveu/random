@@ -4,24 +4,24 @@ use std::sync::atomic::{Ordering, AtomicU64};
 
 #[repr(align(64))]
 #[derive(Debug)]
-struct PaddedAtomicU64 {
+struct AlignedAtomicU64 {
     value: AtomicU64,
 }
 
-impl PaddedAtomicU64 {
+impl AlignedAtomicU64 {
     fn new(x: u64) -> Self {
         Self{value: AtomicU64::new(x)}
     }
 }
 
-unsafe impl Send for PaddedAtomicU64 {}
-unsafe impl Sync for PaddedAtomicU64 {}
+unsafe impl Send for AlignedAtomicU64 {}
+unsafe impl Sync for AlignedAtomicU64 {}
 
 const THREADS: usize = 8;
 const ITERATIONS: usize = 40_000_000;
 
 fn main() {
-    let counters = Arc::new([PaddedAtomicU64::new(0), PaddedAtomicU64::new(0)]);
+    let counters = Arc::new([AlignedAtomicU64::new(0), AlignedAtomicU64::new(0)]);
     let mut handles = Vec::with_capacity(THREADS);
     let barrier = Arc::new(Barrier::new(THREADS));
 

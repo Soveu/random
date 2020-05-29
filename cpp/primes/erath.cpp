@@ -2,10 +2,10 @@
 #include <vector>
 #include <stdint.h>
 
-std::vector<uint64_t> get_primes(uint64_t n) {
+std::vector<uint32_t> get_primes(uint64_t n) {
   n += 1;
   std::vector<bool> isntPrime(n);
-  std::vector<uint64_t> primes;
+  std::vector<uint32_t> primes;
 
   for(size_t i=4; i<isntPrime.size(); i += 2) {
     isntPrime[i] = true;
@@ -27,14 +27,8 @@ std::vector<uint64_t> get_primes(uint64_t n) {
 }
 
 int main() {
-  auto primes = get_primes(64);
+  auto primes = get_primes(1ULL << 28);
   std::cout << primes.size() << '\n';
-
-  int64_t num = 1;
-  for(size_t i=0; i<primes.size(); ++i) {
-    num *= primes[i];
-    std::cout << num << '\n';
-  }
 
   return 0;
 }

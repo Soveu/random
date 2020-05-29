@@ -1,0 +1,148 @@
+Read input - 402.181309ms
+Inserted elements - 49.76118304s
+Number of elements: 99999999
+Hits: 75961357
+Finished (291.34075809s)
+
+ Performance counter stats for './binsearch':
+
+        290,567.23 msec task-clock:u              #    0.997 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+           390,726      page-faults:u             #    0.001 M/sec                  
+ 1,025,414,726,320      cycles:u                  #    3.529 GHz                      (62.50%)
+    26,132,056,481      stalled-cycles-frontend:u #    2.55% frontend cycles idle     (62.50%)
+   724,567,403,630      stalled-cycles-backend:u  #   70.66% backend cycles idle      (62.50%)
+   264,847,018,414      instructions:u            #    0.26  insn per cycle         
+                                                  #    2.74  stalled cycles per insn  (62.50%)
+    59,853,288,749      branches:u                #  205.988 M/sec                    (62.50%)
+     3,515,235,451      branch-misses:u           #    5.87% of all branches          (62.50%)
+   161,467,019,537      L1-dcache-loads:u         #  555.696 M/sec                    (62.50%)
+    10,740,227,535      L1-dcache-load-misses:u   #    6.65% of all L1-dcache hits    (62.50%)
+   <not supported>      LLC-loads:u                                                 
+   <not supported>      LLC-load-misses:u                                           
+
+     291.429938104 seconds time elapsed
+
+     286.689672000 seconds user
+       0.804953000 seconds sys
+
+
+Read input - 395.44714ms
+Inserted elements - 167.880826241s
+Number of elements: 52142797
+Hits: 75961357
+Finished (358.578125532s)
+
+ Performance counter stats for './btree':
+
+        360,136.27 msec task-clock:u              #    0.997 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+           381,524      page-faults:u             #    0.001 M/sec                  
+ 1,270,482,643,294      cycles:u                  #    3.528 GHz                      (62.50%)
+    90,431,543,386      stalled-cycles-frontend:u #    7.12% frontend cycles idle     (62.50%)
+   913,915,023,415      stalled-cycles-backend:u  #   71.93% backend cycles idle      (62.50%)
+   338,040,540,012      instructions:u            #    0.27  insn per cycle         
+                                                  #    2.70  stalled cycles per insn  (62.50%)
+    86,444,587,361      branches:u                #  240.033 M/sec                    (62.50%)
+     2,699,166,899      branch-misses:u           #    3.12% of all branches          (62.50%)
+   166,290,669,885      L1-dcache-loads:u         #  461.744 M/sec                    (62.50%)
+    18,654,163,127      L1-dcache-load-misses:u   #   11.22% of all L1-dcache hits    (62.50%)
+   <not supported>      LLC-loads:u                                                 
+   <not supported>      LLC-load-misses:u                                           
+
+     361.173514471 seconds time elapsed
+
+     354.876228000 seconds user
+       1.235599000 seconds sys
+
+
+Inserting entries (383.009118ms)
+Number of elements: 52142797
+Checking entries (34.236139842s)
+Hits: 75961357, Misses: 24038642
+Finished (63.896627671s)
+
+ Performance counter stats for './hash':
+
+         63,854.93 msec task-clock:u              #    0.998 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+           557,152      page-faults:u             #    0.009 M/sec                  
+   223,834,570,686      cycles:u                  #    3.505 GHz                      (62.50%)
+       552,787,020      stalled-cycles-frontend:u #    0.25% frontend cycles idle     (62.50%)
+   200,567,426,309      stalled-cycles-backend:u  #   89.61% backend cycles idle      (62.50%)
+    72,514,558,057      instructions:u            #    0.32  insn per cycle         
+                                                  #    2.77  stalled cycles per insn  (62.50%)
+     9,841,015,249      branches:u                #  154.115 M/sec                    (62.50%)
+       296,362,601      branch-misses:u           #    3.01% of all branches          (62.50%)
+    27,459,082,873      L1-dcache-loads:u         #  430.023 M/sec                    (62.50%)
+       840,191,721      L1-dcache-load-misses:u   #    3.06% of all L1-dcache hits    (62.50%)
+   <not supported>      LLC-loads:u                                                 
+   <not supported>      LLC-load-misses:u                                           
+
+      63.978838053 seconds time elapsed
+
+      62.378375000 seconds user
+       0.985725000 seconds sys
+
+
+Inserted elements - 219.03s)
+Got 52142797 entries
+Hits: 75961357
+Finished (448.26s)
+
+ Performance counter stats for './set':
+
+        459,757.42 msec task-clock:u              #    0.998 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+         1,018,547      page-faults:u             #    0.002 M/sec                  
+ 1,618,960,561,725      cycles:u                  #    3.521 GHz                      (62.50%)
+    42,033,189,372      stalled-cycles-frontend:u #    2.60% frontend cycles idle     (62.50%)
+ 1,289,133,675,137      stalled-cycles-backend:u  #   79.63% backend cycles idle      (62.50%)
+   330,416,767,170      instructions:u            #    0.20  insn per cycle         
+                                                  #    3.90  stalled cycles per insn  (62.50%)
+    88,961,578,814      branches:u                #  193.497 M/sec                    (62.50%)
+     3,653,025,930      branch-misses:u           #    4.11% of all branches          (62.50%)
+   149,532,623,851      L1-dcache-loads:u         #  325.242 M/sec                    (62.50%)
+     8,726,674,440      L1-dcache-load-misses:u   #    5.84% of all L1-dcache hits    (62.50%)
+   <not supported>      LLC-loads:u                                                 
+   <not supported>      LLC-load-misses:u                                           
+
+     460.710612558 seconds time elapsed
+
+     453.696976000 seconds user
+       2.423933000 seconds sys
+
+
+Inserted elements - 67.8888s)
+Got 52142797 entries
+Hits: 75961357
+Finished (120.57s)
+
+ Performance counter stats for './unordered_set':
+
+        128,126.34 msec task-clock:u              #    0.998 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+         1,205,310      page-faults:u             #    0.009 M/sec                  
+   448,758,380,328      cycles:u                  #    3.502 GHz                      (62.50%)
+    82,462,225,678      stalled-cycles-frontend:u #   18.38% frontend cycles idle     (62.50%)
+   288,476,090,501      stalled-cycles-backend:u  #   64.28% backend cycles idle      (62.50%)
+   137,101,126,277      instructions:u            #    0.31  insn per cycle         
+                                                  #    2.10  stalled cycles per insn  (62.50%)
+    28,551,271,672      branches:u                #  222.837 M/sec                    (62.50%)
+       381,250,218      branch-misses:u           #    1.34% of all branches          (62.50%)
+    77,584,234,112      L1-dcache-loads:u         #  605.529 M/sec                    (62.50%)
+     1,259,850,108      L1-dcache-load-misses:u   #    1.62% of all L1-dcache hits    (62.50%)
+   <not supported>      LLC-loads:u                                                 
+   <not supported>      LLC-load-misses:u                                           
+
+     128.360138805 seconds time elapsed
+
+     125.566838000 seconds user
+       1.555392000 seconds sys
+
+

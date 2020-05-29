@@ -2,9 +2,9 @@
 #include <vector>
 #include <stdint.h>
 
-std::vector<uint64_t> get_primes(uint64_t n) {
-  std::vector<uint64_t> minPrime(n+1);
-  std::vector<uint64_t> primes;
+std::vector<uint32_t> get_primes(uint64_t n) {
+  std::vector<uint32_t> minPrime(n+1);
+  std::vector<uint32_t> primes;
 
   primes.reserve(n >> 3);
 
@@ -25,7 +25,7 @@ std::vector<uint64_t> get_primes(uint64_t n) {
 }
 
 int main() {
-  auto primes = get_primes(1ULL << 22);
+  auto primes = get_primes(1ULL << 28);
   std::cout << primes.size() << '\n';
 
   return 0;

@@ -25,8 +25,15 @@ std::vector<uint32_t> get_primes(uint64_t n) {
 }
 
 int main() {
-  auto primes = get_primes(1ULL << 28);
+  auto primes = get_primes(1000 * 1000 * 1000);
   std::cout << primes.size() << '\n';
+
+  /*
+  for(const auto& p : primes) {
+    std::cout << p << ' ';
+  }
+  std::cout << std::endl;
+  */
 
   return 0;
 }

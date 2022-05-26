@@ -14,8 +14,8 @@
     14                                 
     15                                 [section .data]
     16                                 msg:
-    17 00000000 48656C6C6F2077C3B3-     db "Hello wórld", 10, 0
-    18 00000000 726C640A00         
+    17 00000000 48656C6C6F20776F72-     db "Hello world", 10, 0
+    18 00000000 6C640A00           
     19                                 dataend:
     20                                 
     21                                 
@@ -43,7 +43,7 @@
     43 0000003C 48C7C001000000          mov rax, SYS_write
     44 00000043 48C7C701000000          mov rdi, FD_STDOUT
     45 0000004A 48C7C6[00000000]        mov rsi, msg
-    46 00000051 48BA0E000000000000-     mov rdx, dataend-msg
+    46 00000051 48BA0D000000000000-     mov rdx, dataend-msg
     47 00000051 00                 
     48 0000005B 0F05                    syscall
     49                                 

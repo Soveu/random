@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <stdint.h>
 
@@ -25,15 +26,13 @@ std::vector<uint32_t> get_primes(uint64_t n) {
 }
 
 int main() {
-  auto primes = get_primes(1000 * 1000 * 1000);
-  std::cout << primes.size() << '\n';
+  auto primes = get_primes(1 << 16);
 
-  /*
   for(const auto& p : primes) {
-    std::cout << p << ' ';
+    std::cout << "0x" << std::hex << (p*p) << ", ";
   }
   std::cout << std::endl;
-  */
+  std::cout << primes.size() << '\n';
 
   return 0;
 }
